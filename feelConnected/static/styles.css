@@ -1,0 +1,18 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  background-color: grey;
+  text-align: center;
+}
+
+#map {
+  background-color: grey;
+}
+
+.video-wrapper {
+  background-color: grey;
+}

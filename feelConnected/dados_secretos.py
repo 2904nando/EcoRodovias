@@ -1,0 +1,5 @@
+db_user = "cajhzihnzlfeam"
+db_pswd = "07cf65d371098ef1233562cddb5dfbe441010eec69a7677b4c1e8094c41e32b4"
+db_host = "ec2-174-129-253-27.compute-1.amazonaws.com"
+db_port = "5432"
+db_db = "d1trbv2hk2ltgd"

@@ -1,0 +1,46 @@
+{% extends "shared.html.j2" %}
+{% block title %}Contato{% endblock %}
+
+{% block body %}
+
+<br>
+<h1>Contato do Usuário</h1>
+
+<form>
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" id="nome" aria-describedby="assuntoHelp" placeholder="Seu nome">
+  </div>
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input type="text" class="form-control" id="email" placeholder="Seu email">
+  </div>
+  <div class="form-group">
+    <label for="assunto">Celular para contato</label>
+    <input type="tel" class="form-control" id="assunto" aria-describedby="celHelp" placeholder="Seu celular">
+    <small id="celHelp" class="form-text text-muted">Apenas utilizado caso o nosso time queira sanar alguma dúvida!</small>
+  </div>
+  <div class="form-group">
+    <label for="assunto">Assunto</label>
+    <input type="text" class="form-control" id="assunto" aria-describedby="assuntoHelp" placeholder="Adicione um assunto">
+    <small id="assuntoHelp" class="form-text text-muted">O Assunto pode ser qualquer coisa que resuma sua dúvida ou motivo de contato!</small>
+  </div>
+  <div class="form-group">
+    <label for="descricao">Descrição do problema (ou dúvida)</label>
+    <textarea class="form-control" id="descricao" rows="4"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="foto">Foto</label>
+    <input type="file" class="form-control-file" aria-describedby="fotoHelp" id="foto" accept="image/*">
+    <small id="fotoHelp" class="form-text text-muted">Caso queira enviar uma foto para facilitar o contato!</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar para equipe de suporte</button>
+</form>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#nav_contato_usuario').addClass('active')
+  })
+</script>
+
+{% endblock %}

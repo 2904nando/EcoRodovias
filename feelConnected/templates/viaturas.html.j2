@@ -1,0 +1,30 @@
+{% extends "shared.html.j2" %}
+{% block title %}Viaturas{% endblock %}
+
+{% block body %}
+<br>
+<h1>Viaturas</h1>
+<div class="col-md-12">
+  <small class="text-muted">
+    Localização real de todas as viaturas.
+  </small>
+</div>
+
+<div id="map" class="col-md-12 embed-responsive embed-responsive-16by9"></div>
+
+<script src="../static/viaturas_maps.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2XwTDzyFYTW70vDhZxnkLewM_LEcrscE&callback=initMap">
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#nav_viaturas').addClass('active')
+  })
+</script>
+
+{% endblock %}
