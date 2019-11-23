@@ -16,3 +16,11 @@
 .video-wrapper {
   background-color: grey;
 }
+
+.card {
+  transition: .2s;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}

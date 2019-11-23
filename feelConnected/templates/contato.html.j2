@@ -1,0 +1,39 @@
+{% extends "shared.html.j2" %}
+{% block title %}Contato{% endblock %}
+
+{% block body %}
+
+<br>
+<h1>Contatos</h1>
+
+<div class="card border-danger mb-3">
+  <div class="card-header">Emergência</div>
+  <div class="card-body">
+    <h5 class="card-title">Carro Quebrado</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Luis Felipe - <i>23/11/2019 06:39</i></h6>
+    <p class="card-text">Meu carro quebrou, estamos em 4 pessoas. Pelo que parece, o problema está no radiador, mas precisamos de ajuda para resolvê-lo.</p>
+    <a href="#" class="card-link">Iniciar Chat</a>
+    <a href="#" class="card-link">Ver mais detalhes</a>
+  </div>
+</div>
+
+<div class="card border-primary mb-3">
+  <div class="card-header">Dúvida</div>
+  <div class="card-body">
+    <h5 class="card-title">Posto de combustível mais próximo?</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Antonio - <i>22/11/2019 23:10</i></h6>
+    <p class="card-text">Gostaríamos de parar em algum posto para descansar um pouco, mas não sabemos qual será o próximo daqui pra frente. Podem nos ajudar?</p>
+    <a href="#" class="card-link">Iniciar Chat</a>
+    <a href="#" class="card-link">Ver mais detalhes</a>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#nav_contato').addClass('active')
+  })
+</script>
+
+{% endblock %}

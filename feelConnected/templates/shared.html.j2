@@ -29,6 +29,9 @@
           <li class="nav-item">
             <a class="nav-link" id="nav_contato_usuario" href="{{ url_for('contato_usuario') }}">Contato Usuário</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" id="nav_contato" href="{{ url_for('contato') }}">Contato</a>
+          </li>
         </ul>
         <ul class="nav navbar-nav ml-auto">
           {% if current_user.is_authenticated %}
