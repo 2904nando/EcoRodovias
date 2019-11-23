@@ -1,5 +1,6 @@
 from feelConnected import db, login_manager
 from flask_login import UserMixin
+import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -36,3 +37,18 @@ class Permissao_Usuario(db.Model):
 
     def __repr__(self):
         return f"Permissão_Usuario('{self.user_id}, {self.permission_id}')"
+
+class Contato(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    subject = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.String(2000), nullable=False)
+    date = db.Column(db.DateTime(False), nullable=False, default=datetime.datetime.utcnow)
+    usr_name = db.Column(db.String(200), nullable=False)
+    usr_email = db.Column(db.String(200), nullable=False)
+    usr_phone = db.Column(db.String(200), nullable=False)
+    usr_location_lat = db.Column(db.String(200), nullable=False, default="-23.822758")
+    usr_location_long = db.Column(db.String(200), nullable=False, default="-46.582238")
+
+    def __repr__(self):
+        return f"Contato('{self.subject}')"

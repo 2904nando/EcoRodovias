@@ -1,5 +1,5 @@
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FileField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, InputRequired, Optional, ValidationError
 from feelConnected.models import User
 
@@ -20,8 +20,19 @@ class FormularioRegistro(Form):
         if user:
             raise ValidationError('Esse e-mail já está sendo utilizado! Por favor, escolha outro.')
 
+
 class FormularioLogin(Form):
     email = StringField('E-mail', validators=[DataRequired()])
     password = PasswordField('Senha', validators=[DataRequired()])
     remember = BooleanField('Lembrar de mim')
     submit = SubmitField('Login')
+
+
+class FormularioContato(Form):
+    nome = StringField('Nome', validators=[DataRequired(message="Este campo é obrigatório!")])
+    email = StringField('E-mail', validators=[DataRequired(message="Este campo é obrigatório!"), Email(message='E-mail inválido!')])
+    celular = StringField('Celular', validators=[DataRequired(message="Este campo é obrigatório!")])
+    assunto = StringField('Assunto', validators=[DataRequired(message="Este campo é obrigatório!")])
+    descricao = TextAreaField('Descricao', validators=[DataRequired(message="Este campo é obrigatório!")])
+    foto = FileField('Foto', validators=[])
+    submit = SubmitField('Enviar para Suporte')

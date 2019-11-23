@@ -1,7 +1,7 @@
 from flask import render_template, redirect, request, url_for, flash
 from feelConnected import app, db, bcrypt
-from feelConnected.forms import FormularioRegistro, FormularioLogin
-from feelConnected.models import User
+from feelConnected.forms import FormularioRegistro, FormularioLogin, FormularioContato
+from feelConnected.models import User, Contato
 from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route("/")
@@ -57,8 +57,22 @@ def rota():
 
 @app.route("/contato")
 def contato():
-    return render_template("contato.html.j2")
+    contatos = Contato.query.all()
+    return render_template("contato.html.j2", contatos=contatos)
 
-@app.route("/contato_usuario")
+@app.route("/contato_usuario", methods=['GET', 'POST'])
 def contato_usuario():
-    return render_template("contato_usuario.html.j2")
+    form = FormularioContato()
+    if form.validate_on_submit():
+        contato = Contato(subject=form.assunto.data,
+                          description=form.descricao.data,
+                          usr_name=form.nome.data,
+                          usr_email=form.email.data,
+                          usr_phone=form.celular.data)
+        db.session.add(contato)
+        db.session.commit()
+        flash(f'Ticket criado com sucesso!.', 'success')
+        return redirect(url_for("index"))
+    else:
+        print(form.errors)
+    return render_template("contato_usuario.html.j2", form=form)

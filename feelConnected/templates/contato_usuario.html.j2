@@ -4,8 +4,108 @@
 {% block body %}
 
 <br>
-<h1>Contato do Usuário</h1>
 
+<form action="" method="POST">
+  {{ form.hidden_tag() }}
+  <fieldset class="form-group">
+    <legend class="border-bottom mb-4">Contato Usuário</legend>
+    <div class="form-group">
+      {{ form.nome.label(class="form-control-label") }}
+
+      {% if form.errors.nome %}
+        {{ form.nome(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.nome.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        {{ form.nome(class="form-control form-control-lg") }}
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.email.label(class="form-control-label") }}
+
+      {% if form.errors.email %}
+        {{ form.email(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.email.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        {{ form.email(class="form-control form-control-lg") }}
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.celular.label(class="form-control-label") }}
+
+      {% if form.errors.celular %}
+        {{ form.celular(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.celular.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        {{ form.celular(class="form-control form-control-lg") }}
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.assunto.label(class="form-control-label") }}
+
+      {% if form.errors.assunto %}
+        {{ form.assunto(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.assunto.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        {{ form.assunto(class="form-control form-control-lg") }}
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.descricao.label(class="form-control-label") }}
+
+      {% if form.errors.descricao %}
+        {{ form.descricao(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.descricao.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        {{ form.descricao(class="form-control form-control-lg") }}
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.foto.label(class="form-control-label") }}
+
+      {% if form.errors.foto %}
+        {{ form.foto(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.foto.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        {{ form.foto(class="") }}
+      {% endif %}
+    </div>
+
+  </fieldset>
+  <div class="form-group">
+    {{ form.submit(class="btn btn-primary") }}
+  </div>
+</form>
+
+<!--
 <form>
   <div class="form-group">
     <label for="nome">Nome</label>
@@ -36,6 +136,7 @@
   </div>
   <button type="submit" class="btn btn-primary">Enviar para equipe de suporte</button>
 </form>
+-->
 
 <script type="text/javascript">
   $(document).ready(function(){

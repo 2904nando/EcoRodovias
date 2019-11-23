@@ -14,12 +14,6 @@ function abrirModal(torre) {
 }
 
 function initMap() {
-  //Criação das torres
-  var torre1 = {lat: -23.56551, lng: -46.65548};
-  var torre2 = {lat: -23.55935, lng: -46.6374};
-  var torre3 = {lat: -23.57426, lng: -46.66715};
-  var torre4 = {lat: -23.57749, lng: -46.64046};
-
   var mapConfigs = [
     {
       "featureType": "administrative",
@@ -57,23 +51,22 @@ function initMap() {
     }
   ]
 
-  var json = [{
-    "Nazev": "Pobocka 1",
-    "Mesto": "Praha",
-    "Ulice": "Nejvetsi 35\/352",
-    "PSC": "12345",
-    "Web": "www.praha.cz",
-    "Lat": "50.0596696",
-    "Long": "14.4656239"
-  }, {
-    "Nazev": "Pobocka 2",
-    "Mesto": "Brno",
-    "Ulice": "Nejmensi 384\/64",
-    "PSC": "54321",
-    "Web": "www.brno.cz",
-    "Lat": "49.2020701",
-    "Long": "16.5779606"
-  }];
+  var viaturas = [
+    {
+      "Nome": "Viatura V001",
+      "Motorista": "Felipe Matos",
+      "Ativo": true,
+      "Lat": "-23.813400",
+      "Long": "-46.585210"
+    },
+    {
+      "Nome": "Viatura V002",
+      "Motorista": "Gabriel Lemos",
+      "Ativo": true,
+      "Lat": "-23.822758",
+      "Long": "-46.582238"
+    },
+  ];
 
   var center = new google.maps.LatLng(-23.837395, -46.5309157);
   var mapOptions = {
@@ -85,6 +78,45 @@ function initMap() {
   //Instância do Mapa, centrado na torre 1
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+  for (i = 0; i < viaturas.length; i++) {
+    var Nome = viaturas[i].Nome;
+    var Motorista = viaturas[i].Motorista;
+    var Ativo = viaturas[i].Ativo;
+    var Lat = viaturas[i].Lat;
+    var Long = viaturas[i].Long;
+    var contentString = "<b>" + Nome + "</b><br>" + Motorista + "<br>" + Ativo + "<br>";
+    var latLng = new google.maps.LatLng(Lat, Long);
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: map
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    google.maps.event.addListener(marker, 'click', (function(marker, contentString) {
+      return function() {
+        infowindow.setContent(contentString);
+        infowindow.open(map, marker);
+      }
+    })(marker, contentString));
+    google.maps.event.addListener(marker, 'mouseover', (function(marker, contentString) {
+      return function() {
+        infowindow.setContent(contentString);
+        infowindow.open(map, marker);
+      }
+    })(marker, contentString));
+    google.maps.event.addListener(marker, 'mouseout', (function(marker, contentString) {
+      return function() {
+        infowindow.close();
+      }
+    })(marker, contentString));
+
+  }
+
+
+/*
   //Instância de todos os marcadores
   var torre1marker = new google.maps.Marker({position: torre1, map: map, title: 'Torre 1'});
   var torre2marker = new google.maps.Marker({position: torre2, map: map, title: 'Torre 2'});
@@ -143,5 +175,5 @@ function initMap() {
   google.maps.event.addListener(torre4marker, 'click', function() {
     abrirModal('t4')
   })
-
+*/
 }
